@@ -38,9 +38,18 @@ export default {
       };
     },
     selectedDate() {
-      return this.date ?
-        `${this.date.getFullYear()}-${this.date.getMonth() + 1}-${this.date.getDate()}` :
-        null;
+      if (this.date) {
+        const year = this.date.getFullYear();
+        const month = (this.date.getMonth() + 1) >= 10 ?
+          (this.date.getMonth() + 1) :
+          `0${(this.date.getMonth() + 1)}`;
+        const date = this.date.getDate() >= 10 ?
+          this.date.getDate() :
+          `0${this.date.getDate()}`;
+        return `${year}-${month}-${date}`;
+      }
+
+      return null;
     },
   },
 };
