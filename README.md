@@ -2,6 +2,16 @@
 
 > Material Design Datepicker for Vue.js
 
+## Install
+
+```sh
+# via yarn
+yarn add vue-mdl-datepicker
+
+# or via npm
+npm install --save vue-mdl-datepicker
+```
+
 ## Usage
 ```vue
 <template>
@@ -10,6 +20,7 @@
 </template>
 
 <script>
+import 'vue-mdl-datepicker/dist/vue-mdl-datepicker.css';
 import MdlDatepicker from 'vue-mdl-datepicker';
 
 export default {
@@ -38,3 +49,10 @@ export default {
 - [ ] Portrait / Landscape
 - [ ] Transitions
 - [ ] Unit tests
+
+# LICENSE
+
+[MIT](http://opensource.org/licenses/MIT)
+
+Copyright (c) 2016 CYBAI
+
