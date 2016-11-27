@@ -5,7 +5,8 @@
 ## Usage
 ```vue
 <template>
-  <mdl-datepicker></mdl-datepicker>
+  <div>{{date}}</div>
+  <mdl-datepicker v-model="date"></mdl-datepicker>
 </template>
 
 <script>
@@ -14,6 +15,11 @@ import MdlDatepicker from 'vue-mdl-datepicker';
 export default {
   name: 'MyComponent',
   components: { MdlDatepicker },
+  data() {
+    return {
+      date: new Date(),
+    };
+  },
 };
 </script>
 ```
