@@ -11,7 +11,7 @@ Object.keys(baseWebpackConfig.entry).forEach(function (name) {
 
 module.exports = merge(baseWebpackConfig, {
   entry: {
-    app: './src/dev.js'
+    app: './example/dev.js'
   },
   devtool: '#eval-source-map',
   plugins: [

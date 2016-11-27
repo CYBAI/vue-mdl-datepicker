@@ -3,7 +3,7 @@ var projectRoot = path.resolve(__dirname, '../');
 
 module.exports = {
   entry: {
-    app: './src/index.js'
+    app: './example/index.js'
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -14,7 +14,7 @@ module.exports = {
     extensions: ['', '.js', '.vue'],
     fallback: [path.join(__dirname, '../node_modules')],
     alias: {
-      'src': path.resolve(__dirname, '../src')
+      'vue-mdl-datepicker': path.resolve(__dirname, '../src/Datepicker')
     }
   },
   resolveLoader: {

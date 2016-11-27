@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { getYearsArray } from './dateUtils';
+import { getYearsArray } from '../util/dateUtils';
 
 import CalendarYearButton from './CalendarYearButton';
 

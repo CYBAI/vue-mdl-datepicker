@@ -22,10 +22,10 @@
 </template>
 
 <script>
-import DateDisplay from './DateDisplay';
-import CalendarDialog from './CalendarDialog';
-import DatepickerInput from './DatepickerInput';
-import DatepickerOverlay from './DatepickerOverlay';
+import DateDisplay from './components/DateDisplay';
+import CalendarDialog from './components/CalendarDialog';
+import DatepickerInput from './components/DatepickerInput';
+import DatepickerOverlay from './components/DatepickerOverlay';
 
 export default {
   name: 'mdl-datepicker',

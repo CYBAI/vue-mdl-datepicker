@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import MdlDatepicker from './Datepicker';
+import MdlDatepicker from 'vue-mdl-datepicker';
 
 export default {
   name: 'app',

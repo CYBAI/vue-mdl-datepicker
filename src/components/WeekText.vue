@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { dayAbbr } from './dateUtils';
+import { dayAbbr } from '../util/dateUtils';
 
 export default {
   name: 'week-text',

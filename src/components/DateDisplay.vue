@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { dayList, monthList } from './dateUtils';
+import { dayList, monthList } from '../util/dateUtils';
 
 export default {
   name: 'date-display',

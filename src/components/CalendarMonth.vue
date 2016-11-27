@@ -10,7 +10,7 @@
 
 <script>
 import WeekRow from './WeekRow';
-import { getWeekArray } from './dateUtils';
+import { getWeekArray } from '../util/dateUtils';
 
 export default {
   name: 'calendar-month',

@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { monthFullList } from './dateUtils';
+import { monthFullList } from '../util/dateUtils';
 
 import LeftArrow from './LeftArrowSVG';
 import RightArrow from './RightArrowSVG';

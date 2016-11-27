@@ -11,8 +11,7 @@ var distDir = path.resolve(__dirname, '../dist');
 var webpackConfig = merge(baseWebpackConfig, {
   devtool: '#source-map',
   output: {
-    filename: 'js/[name].[chunkhash].js',
-    chunkFilename: 'js/[id].[chunkhash].js'
+    filename: 'js/vue-mdl-datepicker.js',
   },
   vue: {
     loaders: utils.cssLoaders({
@@ -32,7 +31,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     // extract css into its own file
-    new ExtractTextPlugin('css/[name].[contenthash].css')
+    new ExtractTextPlugin('css/vue-mdl-datepicker.css')
   ]
 });
 
