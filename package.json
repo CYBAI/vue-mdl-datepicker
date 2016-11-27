@@ -10,7 +10,8 @@
   "scripts": {
     "build": "webpack -p --config build/webpack.prod.conf.js",
     "dev": "webpack-dev-server --inline --hot --config build/webpack.dev.conf.js",
-    "unit": "karma start test/unit/karma.conf.js --single-run"
+    "unit": "karma start test/unit/karma.conf.js --single-run",
+    "prepublish": "rm -rf dist && npm run build"
   },
   "dependencies": {
     "vue": "^2.1.3"
