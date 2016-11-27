@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import bus from './eventBus';
 import WeekText from './WeekText';
 import CalendarToolbar from './CalendarToolbar';
 import CalendarMonth from './CalendarMonth';
@@ -47,11 +46,11 @@ export default {
     };
   },
   mounted() {
-    bus.$on('update-display-calendar', (displayDate) => {
+    this.$on('update-display-calendar', (displayDate) => {
       this.displayDate = displayDate;
     });
 
-    bus.$on('update-selected-type', (type) => {
+    this.$on('update-selected-type', (type) => {
       this.selectedType = type;
     });
   },

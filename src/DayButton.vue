@@ -13,8 +13,6 @@
 </template>
 
 <script>
-import bus from './eventBus';
-
 export default {
   name: 'day-button',
   props: {
@@ -25,6 +23,11 @@ export default {
       type: Date,
       required: true,
     },
+  },
+  data() {
+    return {
+      componentRoot: this.$parent.$parent.$parent.$parent.$parent,
+    };
   },
   methods: {
     toDate(day) {
@@ -53,7 +56,7 @@ export default {
       }
     },
     select() {
-      bus.$emit('update-selected', this.day);
+      this.componentRoot.$emit('update-selected', this.day);
     },
   },
   computed: {
@@ -101,8 +104,8 @@ export default {
     },
   },
   mounted() {
-    bus.$on('update-selected', (selected) => {
-      this.selectedDate = selected;
+    this.$on('update-selected', (selected) => {
+      this.componentRoot.selectedDate = selected;
     });
   },
 };

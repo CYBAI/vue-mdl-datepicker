@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import bus from './eventBus';
-
 export default {
   name: 'calendar-year-button',
   props: {
@@ -31,6 +29,7 @@ export default {
   data() {
     return {
       id: `mdl-calendar-year-btn-${this.year}`,
+      componentRoot: this.$parent.$parent,
     };
   },
   methods: {
@@ -41,8 +40,8 @@ export default {
         this.selectedDate.getDate(),
       );
 
-      bus.$emit('update-selected', selected);
-      bus.$emit('update-display-calendar', selected);
+      this.componentRoot.$emit('update-selected', selected);
+      this.componentRoot.$emit('update-display-calendar', selected);
     },
   },
   computed: {

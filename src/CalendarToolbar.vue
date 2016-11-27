@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import bus from './eventBus';
 import { monthFullList } from './dateUtils';
 
 import LeftArrow from './LeftArrowSVG';
@@ -32,6 +31,7 @@ export default {
   data() {
     return {
       showDate: this.displayDate,
+      componentRoot: this.$parent.$parent.$parent,
     };
   },
   components: { LeftArrow, RightArrow },
@@ -45,7 +45,7 @@ export default {
         this.showDate.getMonth() - 1,
         15,
       );
-      bus.$emit('update-display-calendar', this.showDate);
+      this.componentRoot.$emit('update-display-calendar', this.showDate);
     },
     nextMonth() {
       this.showDate = new Date(
@@ -53,7 +53,7 @@ export default {
         this.showDate.getMonth() + 1,
         15,
       );
-      bus.$emit('update-display-calendar', this.showDate);
+      this.componentRoot.$emit('update-display-calendar', this.showDate);
     },
   },
 };

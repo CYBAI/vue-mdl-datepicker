@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import bus from './eventBus';
 
 import Calendar from './Calendar';
 import CalendarCheckBtn from './CalendarCheckButton';
@@ -34,9 +33,14 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      componentRoot: this.$parent,
+    };
+  },
   methods: {
     isOk() {
-      bus.$emit('on-this-day', this.selectedDate);
+      this.componentRoot.$emit('on-this-day', this.selectedDate);
     },
   },
 };

@@ -22,8 +22,6 @@
 </template>
 
 <script>
-import bus from './eventBus';
-
 import DateDisplay from './DateDisplay';
 import CalendarDialog from './CalendarDialog';
 import DatepickerInput from './DatepickerInput';
@@ -58,11 +56,11 @@ export default {
     },
   },
   mounted() {
-    bus.$on('update-selected', (selectedDay) => {
+    this.$on('update-selected', (selectedDay) => {
       this.selected = selectedDay;
     });
 
-    bus.$on('on-this-day', (selected) => {
+    this.$on('on-this-day', (selected) => {
       this.date = selected;
       this.opened = !this.opened;
     });

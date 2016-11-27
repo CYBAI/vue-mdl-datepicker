@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import bus from './eventBus';
 import { dayList, monthList } from './dateUtils';
 
 export default {
@@ -37,7 +36,7 @@ export default {
   methods: {
     selectType(type) {
       this.selectedType = type;
-      bus.$emit('update-selected-type', type);
+      this.$parent.$emit('update-selected-type', type);
     },
   },
   computed: {
