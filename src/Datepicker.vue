@@ -39,6 +39,9 @@ export default {
       type: Date,
       default() { return new Date(); },
     },
+    value: {
+      type: Date,
+    },
   },
   data() {
     return {
@@ -63,6 +66,7 @@ export default {
     this.$on('on-this-day', (selected) => {
       this.date = selected;
       this.opened = !this.opened;
+      this.$emit('input', this.selected);
     });
   },
 };

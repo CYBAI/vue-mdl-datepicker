@@ -1,8 +1,10 @@
 <template>
   <div id="app" class="component">
-    <div>{{date}}</div>
-    <button @click="clickToShowDate">Click</button>
-    <mdl-datepicker ref="date"></mdl-datepicker>
+    <div>{{date1}}</div>
+    <mdl-datepicker v-model="date1"></mdl-datepicker>
+
+    <div>{{date2}}</div>
+    <mdl-datepicker v-model="date2"></mdl-datepicker>
   </div>
 </template>
 
@@ -16,13 +18,9 @@ export default {
   },
   data() {
     return {
-      date: undefined,
+      date1: new Date(),
+      date2: new Date(),
     };
-  },
-  methods: {
-    clickToShowDate() {
-      this.date = this.$refs.date.selected;
-    },
   },
 };
 </script>
