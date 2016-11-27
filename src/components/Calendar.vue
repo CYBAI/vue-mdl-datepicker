@@ -38,10 +38,11 @@ export default {
     },
   },
   data() {
-    const today = new Date();
-
     return {
-      displayDate: new Date(today.getFullYear(), today.getMonth(), 15),
+      componentRoot: this.$parent.$parent,
+      displayDate: new Date(
+        this.selectedDate.getFullYear(), this.selectedDate.getMonth(), 15
+      ),
       selectedType: 'month',
     };
   },
