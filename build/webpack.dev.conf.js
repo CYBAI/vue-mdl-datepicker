@@ -1,22 +1,27 @@
-var path = require('path');
-var webpack = require('webpack');
-var merge = require('webpack-merge');
-var baseWebpackConfig = require('./webpack.base.conf');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const baseWebpackConfig = require('./webpack.base.conf');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // add hot-reload related code to entry chunks
-Object.keys(baseWebpackConfig.entry).forEach(function (name) {
+Object.keys(baseWebpackConfig.entry).forEach((name) => {
   baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name]);
-})
+});
 
 module.exports = merge(baseWebpackConfig, {
   entry: {
-    app: './example/dev.js'
+    app: './example/dev.js',
   },
   devtool: '#eval-source-map',
+  resolve: {
+    alias: {
+      'vue-mdl-datepicker': path.resolve(__dirname, '../src/Datepicker'),
+    },
+  },
   plugins: [
     new webpack.DefinePlugin({
-        'process.env': "'development'"
+      'process.env': "'development'",
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -24,7 +29,7 @@ module.exports = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
-      inject: true
-    })
-  ]
+      inject: true,
+    }),
+  ],
 });

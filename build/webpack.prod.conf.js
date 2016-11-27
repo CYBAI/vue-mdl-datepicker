@@ -1,38 +1,44 @@
-var path = require('path');
-var webpack = require('webpack');
-var merge = require('webpack-merge');
-var baseWebpackConfig = require('./webpack.base.conf');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var utils = require('./utils');
+const path = require('path');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const baseWebpackConfig = require('./webpack.base.conf');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const utils = require('./utils');
 
-var distDir = path.resolve(__dirname, '../dist');
+const distDir = path.resolve(__dirname, '../dist');
 
-var webpackConfig = merge(baseWebpackConfig, {
+const webpackConfig = merge(baseWebpackConfig, {
+  entry: {
+    lib: './src/index.js',
+  },
   devtool: '#source-map',
   output: {
-    filename: 'js/vue-mdl-datepicker.js',
+    path: distDir,
+    publicPath: '/',
+    filename: 'vue-mdl-datepicker.js',
+    library: 'VueMdlDatepicker',
+    libraryTarget: 'umd',
   },
   vue: {
     loaders: utils.cssLoaders({
       sourceMap: true,
-      extract: true
-    })
+      extract: true,
+    }),
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
-      'process.env': "'production'"
+      'process.env': "'production'",
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
-        warnings: false
-      }
+        warnings: false,
+      },
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     // extract css into its own file
-    new ExtractTextPlugin('css/vue-mdl-datepicker.css')
-  ]
+    new ExtractTextPlugin('vue-mdl-datepicker.css'),
+  ],
 });
 
 module.exports = webpackConfig;
