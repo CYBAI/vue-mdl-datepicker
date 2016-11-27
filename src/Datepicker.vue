@@ -66,7 +66,7 @@ export default {
     this.$on('on-this-day', (selected) => {
       this.date = selected;
       this.opened = !this.opened;
-      this.$emit('input', this.selected);
+      this.$emit('input', this.date);
     });
   },
 };

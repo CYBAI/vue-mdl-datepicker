@@ -46,11 +46,11 @@ export default {
     };
   },
   mounted() {
-    this.$on('update-display-calendar', (displayDate) => {
+    this.componentRoot.$on('update-display-calendar', (displayDate) => {
       this.displayDate = displayDate;
     });
 
-    this.$on('update-selected-type', (type) => {
+    this.componentRoot.$on('update-selected-type', (type) => {
       this.selectedType = type;
     });
   },

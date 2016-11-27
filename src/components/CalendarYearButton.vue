@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       id: `mdl-calendar-year-btn-${this.year}`,
-      componentRoot: this.$parent.$parent,
+      componentRoot: this.$parent.$parent.$parent.$parent,
     };
   },
   methods: {
