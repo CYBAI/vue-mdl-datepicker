@@ -27,6 +27,7 @@ export default {
   data() {
     return {
       componentRoot: this.$parent.$parent.$parent.$parent.$parent,
+      hovered: false,
     };
   },
   methods: {
@@ -34,26 +35,10 @@ export default {
       return day.getDate();
     },
     hoverIn() {
-      if (!this.isSelected) {
-        this.hoverStyle['calendar-day-hover'] = true;
-        if (this.isToday) {
-          this.dayStyle['calendar-today-text'] = !this.dayStyle['calendar-today-text'];
-        } else {
-          this.dayStyle['calendar-weekdays'] = !this.dayStyle['calendar-weekdays'];
-        }
-        this.dayStyle['calendar-day-selected-text'] = !this.dayStyle['calendar-day-selected-text'];
-      }
+      this.hovered = true;
     },
     hoverOut() {
-      if (!this.isSelected) {
-        this.hoverStyle['calendar-day-hover'] = false;
-        if (this.isToday) {
-          this.dayStyle['calendar-today-text'] = !this.dayStyle['calendar-today-text'];
-        } else {
-          this.dayStyle['calendar-weekdays'] = !this.dayStyle['calendar-weekdays'];
-        }
-        this.dayStyle['calendar-day-selected-text'] = !this.dayStyle['calendar-day-selected-text'];
-      }
+      this.hovered = false;
     },
     select() {
       this.componentRoot.$emit('update-selected', this.day);
@@ -79,20 +64,33 @@ export default {
       ) : false;
     },
     dayStyle() {
-      return (this.isToday && this.isSelected) ? {
+      const style = (this.isToday && this.isSelected) ? {
+        'calendar-day-text': true,
         'calendar-today-text': false,
         'calendar-weekdays': !this.isToday && !this.isSelected,
         'calendar-day-selected': this.isSelected,
         'calendar-day-selected-text': this.isSelected,
       } : {
+        'calendar-day-text': true,
         'calendar-today-text': this.isToday,
         'calendar-weekdays': !this.isToday && !this.isSelected,
         'calendar-day-selected': this.isSelected,
         'calendar-day-selected-text': this.isSelected,
       };
+
+      if (this.hovered && !this.isSelected) {
+        if (this.isToday) {
+          style['calendar-today-text'] = !style['calendar-today-text'];
+        } else {
+          style['calendar-weekdays'] = !style['calendar-weekdays'];
+        }
+        style['calendar-day-selected-text'] = !style['calendar-day-selected-text'];
+      }
+
+      return style;
     },
     hoverStyle() {
-      return (this.isSelected) ? {
+      const style = (this.isSelected) ? {
         'calendar-day-bg': true,
         'calendar-day-bg-selected': true,
         'calendar-day-hover': false,
@@ -101,6 +99,12 @@ export default {
         'calendar-day-bg-selected': false,
         'calendar-day-hover': false,
       };
+
+      if (!this.isSelected) {
+        style['calendar-day-hover'] = this.hovered;
+      }
+
+      return style;
     },
   },
   mounted() {
@@ -173,22 +177,21 @@ export default {
   width: 34px;
 }
 
-.calendar-day-selected-text {
-  color: rgb(255, 255, 255);
+.calendar-day-text {
   font-weight: 400;
   position: relative;
+}
+
+.calendar-day-selected-text {
+  color: rgb(255, 255, 255);
 }
 
 .calendar-today-text {
   color: rgb(0, 188, 212);
-  font-weight: 400;
-  position: relative;
 }
 
 .calendar-weekdays {
   color: rgba(0, 0, 0, 0.870588);
-  font-weight: 400;
-  position: relative;
 }
 
 .calendar-empty-day {
