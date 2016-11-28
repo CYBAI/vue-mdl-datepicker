@@ -44,7 +44,7 @@ export default {
 - [x] Auto ok
 - [x] Default date
 - [x] First day of week
-- [ ] Format date
+- [x] Format date
 - [x] Max date
 - [x] Min date
 - [x] Should disabled date
