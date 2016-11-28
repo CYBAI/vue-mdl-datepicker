@@ -45,9 +45,9 @@ export default {
 - [x] Default date
 - [x] First day of week
 - [ ] Format date
-- [ ] Max date
-- [ ] Min date
-- [ ] Should disabled date
+- [x] Max date
+- [x] Min date
+- [x] Should disabled date
 - [ ] Disable year selection
 - [ ] Portrait / Landscape
 - [ ] Transitions
