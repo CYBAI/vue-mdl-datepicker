@@ -1,6 +1,6 @@
 var path = require('path');
 var merge = require('webpack-merge');
-var baseConfig = require('../../build/webpack.base.conf');
+var baseConfig = require('../../build/webpack.test.conf');
 var webpack = require('webpack');
 var projectRoot = path.resolve(__dirname, '../../');
 
