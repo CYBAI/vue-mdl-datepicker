@@ -16,7 +16,10 @@ npm install --save vue-mdl-datepicker
 ```vue
 <template>
   <div>{{date}}</div>
-  <mdl-datepicker v-model="date"></mdl-datepicker>
+  <mdl-datepicker
+    v-model="date"
+    :default="date"
+  ></mdl-datepicker>
 </template>
 
 <script>
@@ -39,7 +42,7 @@ export default {
 - [x] Select date
 - [x] Select year
 - [ ] Auto ok
-- [ ] Default date
+- [x] Default date
 - [x] First day of week
 - [ ] Format date
 - [ ] Max date
