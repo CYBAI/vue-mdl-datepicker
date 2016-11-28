@@ -12,6 +12,7 @@
       v-model="date2"
       :autoOk="true"
       :disableYearSelection="true"
+      :formatDate="formatDate"
     ></mdl-datepicker>
 
     <div>{{date3}}</div>
@@ -47,6 +48,9 @@ export default {
   methods: {
     disableWeekends(date) {
       return date.getDay() === 0 || date.getDay() === 6;
+    },
+    formatDate(date) {
+      return date ? date.toDateString() : null;
     },
   },
 };

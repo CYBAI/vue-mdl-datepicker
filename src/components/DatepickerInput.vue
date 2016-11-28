@@ -25,6 +25,10 @@ export default {
     handleOpenDialog: {
       type: Function,
     },
+    formatDate: {
+      type: Function,
+      required: true,
+    },
     date: {
       type: Date,
     },
@@ -38,18 +42,7 @@ export default {
       };
     },
     selectedDate() {
-      if (this.date) {
-        const year = this.date.getFullYear();
-        const month = (this.date.getMonth() + 1) >= 10 ?
-          (this.date.getMonth() + 1) :
-          `0${(this.date.getMonth() + 1)}`;
-        const date = this.date.getDate() >= 10 ?
-          this.date.getDate() :
-          `0${this.date.getDate()}`;
-        return `${year}-${month}-${date}`;
-      }
-
-      return null;
+      return this.formatDate(this.date);
     },
   },
 };

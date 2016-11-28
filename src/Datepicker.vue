@@ -3,6 +3,7 @@
     <datepicker-input
       :date="date"
       :handleOpenDialog="handleOpenDialog"
+      :formatDate="formatDate"
       placeholder="Choose a day..."
     ></datepicker-input>
     <div v-if="opened" class="datepicker-root">
@@ -71,6 +72,23 @@ export default {
     },
     shouldDisableDate: {
       type: Function,
+    },
+    formatDate: {
+      type: Function,
+      default(formatedDate) {
+        if (formatedDate) {
+          const year = formatedDate.getFullYear();
+          const month = (formatedDate.getMonth() + 1) >= 10 ?
+            (formatedDate.getMonth() + 1) :
+            `0${(formatedDate.getMonth() + 1)}`;
+          const date = formatedDate.getDate() >= 10 ?
+            formatedDate.getDate() :
+            `0${formatedDate.getDate()}`;
+          return `${year}-${month}-${date}`;
+        }
+
+        return null;
+      },
     },
     value: {
       type: Date,
