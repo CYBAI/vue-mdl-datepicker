@@ -48,7 +48,7 @@ export default {
 - [x] Max date
 - [x] Min date
 - [x] Should disabled date
-- [ ] Disable year selection
+- [x] Disable year selection
 - [ ] Portrait / Landscape
 - [ ] Transitions
 - [ ] Unit tests
