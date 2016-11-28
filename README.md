@@ -41,7 +41,7 @@ export default {
 ### TODO
 - [x] Select date
 - [x] Select year
-- [ ] Auto ok
+- [x] Auto ok
 - [x] Default date
 - [x] First day of week
 - [ ] Format date
