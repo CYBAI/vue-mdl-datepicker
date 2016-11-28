@@ -1,8 +1,11 @@
 <template>
   <div class="calendar-dialog">
     <calendar
+      :minDate="minDate"
+      :maxDate="maxDate"
       :selectedDate="selectedDate"
       :firstDayOfWeek="firstDayOfWeek"
+      :shouldDisableDate="shouldDisableDate"
     ></calendar>
     <div class="calendar-check-btn-section">
       <calendar-check-btn :handleClick="handleOpenDialog" text="Cancel"></calendar-check-btn>
@@ -20,6 +23,14 @@ export default {
   name: 'calendar-dialog',
   components: { Calendar, CalendarCheckBtn },
   props: {
+    minDate: {
+      type: Date,
+      required: true,
+    },
+    maxDate: {
+      type: Date,
+      required: true,
+    },
     firstDayOfWeek: {
       type: Number,
       required: true,
@@ -31,6 +42,9 @@ export default {
     selectedDate: {
       type: Date,
       required: true,
+    },
+    shouldDisableDate: {
+      type: Function,
     },
   },
   data() {

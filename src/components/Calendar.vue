@@ -3,9 +3,12 @@
     <calendar-toolbar :displayDate="displayDate"></calendar-toolbar>
     <week-text :firstDayOfWeek="firstDayOfWeek"></week-text>
     <calendar-month
+      :minDate="minDate"
+      :maxDate="maxDate"
       :displayDate="displayDate"
       :selectedDate="selectedDate"
       :firstDayOfWeek="firstDayOfWeek"
+      :shouldDisableDate="shouldDisableDate"
     ></calendar-month>
   </div>
   <div v-else class="calendar-year-root">
@@ -28,6 +31,14 @@ export default {
     CalendarYear,
   },
   props: {
+    minDate: {
+      type: Date,
+      required: true,
+    },
+    maxDate: {
+      type: Date,
+      required: true,
+    },
     firstDayOfWeek: {
       type: Number,
       required: true,
@@ -35,6 +46,9 @@ export default {
     selectedDate: {
       type: Date,
       required: true,
+    },
+    shouldDisableDate: {
+      type: Function,
     },
   },
   data() {

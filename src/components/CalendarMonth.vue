@@ -2,7 +2,13 @@
   <div class="calendar-month-container">
     <div class="calendar-weekdays-container">
       <div class="calendar-month-week-column">
-        <week-row :selectedDate="selectedDate" :week="week" v-for="week in weekArray"></week-row>
+        <week-row
+          :minDate="minDate"
+          :maxDate="maxDate"
+          :selectedDate="selectedDate"
+          :shouldDisableDate="shouldDisableDate"
+          :week="week" v-for="week in weekArray"
+        ></week-row>
       </div>
     </div>
   </div>
@@ -19,6 +25,14 @@ export default {
       type: Array,
       default() { return getWeekArray(new Date(), 0); },
     },
+    minDate: {
+      type: Date,
+      required: true,
+    },
+    maxDate: {
+      type: Date,
+      required: true,
+    },
     displayDate: {
       type: Date,
       required: true,
@@ -30,6 +44,9 @@ export default {
     firstDayOfWeek: {
       type: Number,
       required: true,
+    },
+    shouldDisableDate: {
+      type: Function,
     },
   },
   components: { WeekRow },

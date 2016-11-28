@@ -4,7 +4,8 @@
     @click="select"
     @mouseenter="hoverIn"
     @mouseleave="hoverOut"
-    tabindex="0" type="button" class="calendar-day-button"
+    :disabled="disabled"
+    tabindex="0" type="button" :class="buttonStyle"
   >
     <div :class="hoverStyle"></div>
     <span :class="dayStyle">{{toDate(day)}}</span>
@@ -18,6 +19,10 @@ export default {
   props: {
     day: {
       type: [Date, null],
+    },
+    disabled: {
+      type: Boolean,
+      required: true,
     },
     selected: {
       type: Date,
@@ -35,10 +40,14 @@ export default {
       return day.getDate();
     },
     hoverIn() {
-      this.hovered = true;
+      if (!this.disabled) {
+        this.hovered = true;
+      }
     },
     hoverOut() {
-      this.hovered = false;
+      if (!this.disabled) {
+        this.hovered = false;
+      }
     },
     select() {
       this.componentRoot.$emit('update-selected', this.day);
@@ -106,10 +115,16 @@ export default {
 
       return style;
     },
+    buttonStyle() {
+      return {
+        'calendar-day-button': !this.disabled,
+        'calendar-day-button-disabled': this.disabled,
+      };
+    },
   },
   mounted() {
-    this.$on('update-selected', (selected) => {
-      this.componentRoot.selectedDate = selected;
+    this.componentRoot.$on('update-selected', (selected) => {
+      this.selectedDate = selected;
     });
   },
 };
@@ -129,6 +144,25 @@ export default {
   outline: none;
   font-size: inherit;
   font-weight: 400;
+  position: relative;
+  width: 42px;
+  background: none;
+}
+
+.calendar-day-button-disabled {
+  border: 10px;
+  box-sizing: border-box;
+  display: inline-block;
+  font-family: Roboto, sans-serif;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  cursor: default;
+  text-decoration: none;
+  margin: 0px;
+  padding: 4px 0px;
+  outline: none;
+  font-size: inherit;
+  font-weight: 400;
+  opacity: 0.4;
   position: relative;
   width: 42px;
   background: none;

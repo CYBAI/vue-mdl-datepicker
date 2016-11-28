@@ -5,6 +5,19 @@ const monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'
 const monthFullList = ['January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December'];
 
+function isBeforeDate(d1, d2) {
+  return d1.getTime() < d2.getTime();
+}
+
+function isAfterDate(d1, d2) {
+  return d1.getTime() > d2.getTime();
+}
+
+function isBetweenDates(dateToCheck, startDate, endDate) {
+  return (!(isBeforeDate(dateToCheck, startDate)) &&
+          !(isAfterDate(dateToCheck, endDate)));
+}
+
 function getFirstDayOfMonth(d) {
   return new Date(d.getFullYear(), d.getMonth(), 1);
 }
@@ -72,4 +85,5 @@ export default {
   monthList,
   monthFullList,
   getYearsArray,
+  isBetweenDates,
 };

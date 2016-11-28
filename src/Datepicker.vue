@@ -10,9 +10,12 @@
         <div class="calendar-container">
           <date-display :selectedDate="selected"></date-display>
           <calendar-dialog
+            :minDate="minDate"
+            :maxDate="maxDate"
             :selectedDate="selected"
-            :handleOpenDialog="handleOpenDialog"
             :firstDayOfWeek="firstDayOfWeek"
+            :handleOpenDialog="handleOpenDialog"
+            :shouldDisableDate="shouldDisableDate"
           ></calendar-dialog>
         </div>
       </div>
@@ -37,6 +40,25 @@ export default {
     },
     default: {
       type: Date,
+    },
+    maxDate: {
+      type: Date,
+      default() {
+        const now = new Date();
+        now.setFullYear(now.getFullYear() + 100);
+        return now;
+      },
+    },
+    minDate: {
+      type: Date,
+      default() {
+        const now = new Date();
+        now.setFullYear(now.getFullYear() - 100);
+        return now;
+      },
+    },
+    shouldDisableDate: {
+      type: Function,
     },
     value: {
       type: Date,
