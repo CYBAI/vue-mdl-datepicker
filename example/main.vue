@@ -1,7 +1,10 @@
 <template>
   <div id="app" class="component">
     <div>{{date1}}</div>
-    <mdl-datepicker v-model="date1"></mdl-datepicker>
+    <mdl-datepicker
+      v-model="date1"
+      :default="date1"
+    ></mdl-datepicker>
 
     <div>{{date2}}</div>
     <mdl-datepicker v-model="date2"></mdl-datepicker>
@@ -18,7 +21,7 @@ export default {
   },
   data() {
     return {
-      date1: new Date(),
+      date1: new Date(2016, 10, 1),
       date2: new Date(),
     };
   },

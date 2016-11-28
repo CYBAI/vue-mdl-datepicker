@@ -35,9 +35,8 @@ export default {
       type: Number,
       default() { return 0; },
     },
-    selectedDate: {
+    default: {
       type: Date,
-      default() { return new Date(); },
     },
     value: {
       type: Date,
@@ -45,9 +44,9 @@ export default {
   },
   data() {
     return {
-      selected: this.selectedDate,
+      selected: new Date(),
       opened: false,
-      date: undefined,
+      date: this.default,
     };
   },
   methods: {
@@ -66,7 +65,9 @@ export default {
     this.$on('on-this-day', (selected) => {
       this.date = selected;
       this.opened = !this.opened;
-      this.$emit('input', this.date);
+      if (this.value) {
+        this.$emit('input', this.date);
+      }
     });
   },
 };
