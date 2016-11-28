@@ -8,7 +8,10 @@
     <div v-if="opened" class="datepicker-root">
       <div class="datepicker-container">
         <div class="calendar-container">
-          <date-display :selectedDate="selected"></date-display>
+          <date-display
+            :selectedDate="selected"
+            :disableYearSelection="disableYearSelection"
+          ></date-display>
           <calendar-dialog
             :autoOk="autoOk"
             :minDate="minDate"
@@ -43,6 +46,10 @@ export default {
       type: Date,
     },
     autoOk: {
+      type: Boolean,
+      default() { return false; },
+    },
+    disableYearSelection: {
       type: Boolean,
       default() { return false; },
     },

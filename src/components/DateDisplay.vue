@@ -27,6 +27,10 @@ export default {
       type: Date,
       required: true,
     },
+    disableYearSelection: {
+      type: Boolean,
+      required: true,
+    },
   },
   data() {
     return {
@@ -35,8 +39,10 @@ export default {
   },
   methods: {
     selectType(type) {
-      this.selectedType = type;
-      this.$parent.$emit('update-selected-type', type);
+      if (!this.disableYearSelection) {
+        this.selectedType = type;
+        this.$parent.$emit('update-selected-type', type);
+      }
     },
   },
   computed: {
@@ -52,9 +58,15 @@ export default {
       };
     },
     displayYearStyle() {
-      return {
+      const yearCursorStyle = {
         cursor: this.selectedType === 'month' ? 'pointer' : 'default',
       };
+
+      if (this.disableYearSelection) {
+        yearCursorStyle.cursor = 'not-allowed';
+      }
+
+      return yearCursorStyle;
     },
   },
 };

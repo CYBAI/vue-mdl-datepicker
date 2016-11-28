@@ -11,6 +11,7 @@
     <mdl-datepicker
       v-model="date2"
       :autoOk="true"
+      :disableYearSelection="true"
     ></mdl-datepicker>
 
     <div>{{date3}}</div>
