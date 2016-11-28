@@ -3,6 +3,7 @@
     <div class="calendar-weekdays-container">
       <div class="calendar-month-week-column">
         <week-row
+          :autoOk="autoOk"
           :minDate="minDate"
           :maxDate="maxDate"
           :selectedDate="selectedDate"
@@ -21,6 +22,10 @@ import { getWeekArray } from '../util/dateUtils';
 export default {
   name: 'calendar-month',
   props: {
+    autoOk: {
+      type: Boolean,
+      required: true,
+    },
     weekArray: {
       type: Array,
       default() { return getWeekArray(new Date(), 0); },

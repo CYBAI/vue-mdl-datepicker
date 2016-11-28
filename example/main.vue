@@ -8,7 +8,10 @@
     ></mdl-datepicker>
 
     <div>{{date2}}</div>
-    <mdl-datepicker v-model="date2"></mdl-datepicker>
+    <mdl-datepicker
+      v-model="date2"
+      :autoOk="true"
+    ></mdl-datepicker>
 
     <div>{{date3}}</div>
     <mdl-datepicker

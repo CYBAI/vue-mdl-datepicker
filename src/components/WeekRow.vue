@@ -1,6 +1,7 @@
 <template>
   <div class="calendar-month-week-row">
     <day-button
+      :autoOk="autoOk"
       :selected="selectedDate"
       :disabled="getDisableDates(day)"
       :day="day" v-for="day in week"
@@ -18,6 +19,10 @@ export default {
   props: {
     week: {
       type: Array,
+      required: true,
+    },
+    autoOk: {
+      type: Boolean,
       required: true,
     },
     minDate: {

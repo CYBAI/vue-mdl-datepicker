@@ -10,6 +10,7 @@
         <div class="calendar-container">
           <date-display :selectedDate="selected"></date-display>
           <calendar-dialog
+            :autoOk="autoOk"
             :minDate="minDate"
             :maxDate="maxDate"
             :selectedDate="selected"
@@ -40,6 +41,10 @@ export default {
     },
     default: {
       type: Date,
+    },
+    autoOk: {
+      type: Boolean,
+      default() { return false; },
     },
     maxDate: {
       type: Date,

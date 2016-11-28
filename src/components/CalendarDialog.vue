@@ -1,13 +1,14 @@
 <template>
   <div class="calendar-dialog">
     <calendar
+      :autoOk="autoOk"
       :minDate="minDate"
       :maxDate="maxDate"
       :selectedDate="selectedDate"
       :firstDayOfWeek="firstDayOfWeek"
       :shouldDisableDate="shouldDisableDate"
     ></calendar>
-    <div class="calendar-check-btn-section">
+    <div v-if="!autoOk" class="calendar-check-btn-section">
       <calendar-check-btn :handleClick="handleOpenDialog" text="Cancel"></calendar-check-btn>
       <calendar-check-btn :handleClick="isOk" text="OK"></calendar-check-btn>
     </div>
@@ -23,6 +24,10 @@ export default {
   name: 'calendar-dialog',
   components: { Calendar, CalendarCheckBtn },
   props: {
+    autoOk: {
+      type: Boolean,
+      required: true,
+    },
     minDate: {
       type: Date,
       required: true,

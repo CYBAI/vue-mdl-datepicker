@@ -20,6 +20,10 @@ export default {
     day: {
       type: [Date, null],
     },
+    autoOk: {
+      type: Boolean,
+      required: true,
+    },
     disabled: {
       type: Boolean,
       required: true,
@@ -50,7 +54,11 @@ export default {
       }
     },
     select() {
-      this.componentRoot.$emit('update-selected', this.day);
+      if (!this.autoOk) {
+        this.componentRoot.$emit('update-selected', this.day);
+      } else {
+        this.componentRoot.$emit('on-this-day', this.day);
+      }
     },
   },
   computed: {

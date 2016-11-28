@@ -3,6 +3,7 @@
     <calendar-toolbar :displayDate="displayDate"></calendar-toolbar>
     <week-text :firstDayOfWeek="firstDayOfWeek"></week-text>
     <calendar-month
+      :autoOk="autoOk"
       :minDate="minDate"
       :maxDate="maxDate"
       :displayDate="displayDate"
@@ -31,6 +32,10 @@ export default {
     CalendarYear,
   },
   props: {
+    autoOk: {
+      type: Boolean,
+      required: true,
+    },
     minDate: {
       type: Date,
       required: true,
