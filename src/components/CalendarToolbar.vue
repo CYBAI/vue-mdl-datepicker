@@ -16,6 +16,7 @@
 
 <script>
 import { monthFullList } from '../util/dateUtils';
+import { getComponentRoot } from '../util/componentUtils';
 
 import LeftArrow from './LeftArrowSVG';
 import RightArrow from './RightArrowSVG';
@@ -31,7 +32,7 @@ export default {
   data() {
     return {
       showDate: this.displayDate,
-      componentRoot: this.$parent.$parent.$parent,
+      componentRoot: getComponentRoot(this),
     };
   },
   components: { LeftArrow, RightArrow },

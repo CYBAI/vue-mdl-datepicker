@@ -23,6 +23,8 @@ import CalendarToolbar from './CalendarToolbar';
 import CalendarMonth from './CalendarMonth';
 import CalendarYear from './CalendarYear';
 
+import { getComponentRoot } from '../util/componentUtils';
+
 export default {
   name: 'calendar',
   components: {
@@ -58,7 +60,7 @@ export default {
   },
   data() {
     return {
-      componentRoot: this.$parent.$parent,
+      componentRoot: getComponentRoot(this),
       displayDate: new Date(
         this.selectedDate.getFullYear(), this.selectedDate.getMonth(), 15
       ),

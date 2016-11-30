@@ -16,9 +16,10 @@
 </template>
 
 <script>
-
 import Calendar from './Calendar';
 import CalendarCheckBtn from './CalendarCheckButton';
+
+import { getComponentRoot } from '../util/componentUtils';
 
 export default {
   name: 'calendar-dialog',
@@ -54,7 +55,7 @@ export default {
   },
   data() {
     return {
-      componentRoot: this.$parent,
+      componentRoot: getComponentRoot(this),
     };
   },
   methods: {

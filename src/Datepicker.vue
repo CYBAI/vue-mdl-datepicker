@@ -1,5 +1,5 @@
 <template>
-  <div @keyup.esc.prevent="handleOpenDialog(false)">
+  <div ref="mdlDatepicker" @keyup.esc.prevent="handleOpenDialog(false)">
     <datepicker-input
       :date="date"
       :handleOpenDialog="handleOpenDialog"
