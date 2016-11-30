@@ -63,15 +63,19 @@ describe('DateDisplay.vue', () => {
     should.exist(vm.$el);
 
     const thisComponent = vm.$children[0];
-    const yearSelection = vm.$el.firstChild;
-    const dateSelection = vm.$el.lastChild;
+    thisComponent.disableYearSelection.should.be.false;
+
+    const yearSelection = thisComponent.$el.firstChild;
+    const dateSelection = thisComponent.$el.lastChild;
 
     thisComponent.selectedType.should.be.eql('month');
-    yearSelection.childNodes[0].childNodes[0].click();
+
+    yearSelection.childNodes[0].click();
 
     nextTick(vm)
       .then(() => {
-        dateSelection.childNodes[0].childNodes[0].click();
+        thisComponent.selectedType.should.be.eql('year');
+        dateSelection.childNodes[0].click();
         return nextTick(vm);
       })
       .then(() => {
