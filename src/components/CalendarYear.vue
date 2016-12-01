@@ -21,6 +21,14 @@ export default {
   name: 'calendar-year',
   components: { CalendarYearButton },
   props: {
+    minDate: {
+      type: Date,
+      required: true,
+    },
+    maxDate: {
+      type: Date,
+      required: true,
+    },
     selectedDate: {
       type: Date,
       required: true,
@@ -28,7 +36,9 @@ export default {
   },
   data() {
     return {
-      yearList: getYearsArray(),
+      yearList: getYearsArray(
+        this.minDate.getFullYear(), this.maxDate.getFullYear()
+      ),
     };
   },
   methods: {

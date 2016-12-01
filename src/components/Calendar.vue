@@ -13,7 +13,11 @@
     ></calendar-month>
   </div>
   <div v-else class="calendar-year-root">
-    <calendar-year :selectedDate="selectedDate"></calendar-year>
+    <calendar-year
+      :minDate="minDate"
+      :maxDate="maxDate"
+      :selectedDate="selectedDate"
+    ></calendar-year>
   </div>
 </template>
 
