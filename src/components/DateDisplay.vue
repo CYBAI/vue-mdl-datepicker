@@ -19,6 +19,7 @@
 
 <script>
 import { dayList, monthList } from '../util/dateUtils';
+import { getComponentRoot } from '../util/componentUtils';
 
 export default {
   name: 'date-display',
@@ -35,13 +36,14 @@ export default {
   data() {
     return {
       selectedType: 'month',
+      componentRoot: getComponentRoot(this),
     };
   },
   methods: {
     selectType(type) {
       if (!this.disableYearSelection) {
         this.selectedType = type;
-        this.$parent.$emit('update-selected-type', type);
+        this.componentRoot.$emit('update-selected-type', type);
       }
     },
   },

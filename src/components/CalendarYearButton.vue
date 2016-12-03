@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import { getComponentRoot } from '../util/componentUtils';
+
 export default {
   name: 'calendar-year-button',
   props: {
@@ -29,7 +31,7 @@ export default {
   data() {
     return {
       id: `mdl-calendar-year-btn-${this.year}`,
-      componentRoot: this.$parent.$parent.$parent.$parent,
+      componentRoot: getComponentRoot(this),
     };
   },
   methods: {

@@ -8,6 +8,9 @@ module.exports = {
     "should": true,
     "sinon": true
   },
+  rules: {
+    'no-unused-expressions': 0,
+  },
   settings: {
     'import/resolver': {
       'webpack': {

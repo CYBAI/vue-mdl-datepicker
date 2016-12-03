@@ -13,7 +13,11 @@
     ></calendar-month>
   </div>
   <div v-else class="calendar-year-root">
-    <calendar-year :selectedDate="selectedDate"></calendar-year>
+    <calendar-year
+      :minDate="minDate"
+      :maxDate="maxDate"
+      :selectedDate="selectedDate"
+    ></calendar-year>
   </div>
 </template>
 
@@ -22,6 +26,8 @@ import WeekText from './WeekText';
 import CalendarToolbar from './CalendarToolbar';
 import CalendarMonth from './CalendarMonth';
 import CalendarYear from './CalendarYear';
+
+import { getComponentRoot } from '../util/componentUtils';
 
 export default {
   name: 'calendar',
@@ -58,7 +64,7 @@ export default {
   },
   data() {
     return {
-      componentRoot: this.$parent.$parent,
+      componentRoot: getComponentRoot(this),
       displayDate: new Date(
         this.selectedDate.getFullYear(), this.selectedDate.getMonth(), 15
       ),

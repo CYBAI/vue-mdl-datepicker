@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import { getComponentRoot } from '../util/componentUtils';
+
 export default {
   name: 'day-button',
   props: {
@@ -35,7 +37,7 @@ export default {
   },
   data() {
     return {
-      componentRoot: this.$parent.$parent.$parent.$parent.$parent,
+      componentRoot: getComponentRoot(this),
       hovered: false,
     };
   },
@@ -129,11 +131,6 @@ export default {
         'calendar-day-button-disabled': this.disabled,
       };
     },
-  },
-  mounted() {
-    this.componentRoot.$on('update-selected', (selected) => {
-      this.selectedDate = selected;
-    });
   },
 };
 </script>
