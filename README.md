@@ -40,20 +40,22 @@ export default {
 </script>
 ```
 
+## Props
+
+|         Name         |    Type    |      Default     |                       Description                     |
+|----------------------|------------|------------------|-------------------------------------------------------|
+|    firstDayOfWeek    |  `Number`  |         0        |  The fist day of the week, where 0 represents Sunday. |
+|        default       |   `Date`   |                  |  Default selected date                                |
+|         autoOk       |  `Boolean` |       false      |  If true, automatically ok and close datepicker       |
+| disableYearSelection |  `Boolean` |       false      |  If true, year selection will be disabled             |
+|        maxDate       |   `Date`   |  date + 100 year |  Maximum selected date                                |
+|        minDate       |   `Date`   |  date - 100 year |  Minimum selected date                                |
+|   shouldDisableDate  | `Function` |                  |  Function return those days should be disabled        |
+|      formatDate      | `Function` |     YYYY-MM-dd   |  Function return format of displayed date             |
+
 ### TODO
-- [x] Select date
-- [x] Select year
-- [x] Auto ok
-- [x] Default date
-- [x] First day of week
-- [x] Format date
-- [x] Max date
-- [x] Min date
-- [x] Should disabled date
-- [x] Disable year selection
 - [ ] Portrait / Landscape
 - [ ] Transitions
-- [ ] Unit tests
 
 # LICENSE
 
