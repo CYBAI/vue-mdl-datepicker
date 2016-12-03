@@ -1,5 +1,7 @@
 # vue-mdl-datepicker
 
+[![Build Status](http://img.shields.io/travis/CYBAI/vue-mdl-datepicker.svg?style=flat-square)](https://travis-ci.org/CYBAI/vue-mdl-datepicker)
+
 > Material Design Datepicker for Vue.js
 
 ## Install
