@@ -14,15 +14,21 @@ describe('CalendarYearButton.vue', () => {
     const today = new Date();
     el = document.createElement('div');
     vm = new Vue({
-      render: h => h(
-        CalendarYearButton, {
-          props: {
-            selectedDate: today,
-            selectedYear: today.getFullYear(),
-            year: today.getFullYear() + 1,
-          },
-        }
-      ),
+      data: {
+        selected: today,
+        selectedYear: today.getFullYear(),
+      },
+      render: function render(h) {
+        return h(
+          CalendarYearButton, {
+            props: {
+              selectedDate: this.selected,
+              selectedYear: this.selectedYear,
+              year: today.getFullYear() + 1,
+            },
+          }
+        );
+      },
     }).$mount(el);
   });
 
@@ -41,10 +47,19 @@ describe('CalendarYearButton.vue', () => {
     span.textContent.should.be.eql(`${vm.$children[0].year}`);
   });
 
-  xit('should click year button correctly', (done) => {
+  it('should click year button correctly', (done) => {
     should.exist(vm.$el);
 
     const thisComponent = vm.$children[0];
+
+    thisComponent.componentRoot.$on(
+      'update-selected',
+      function update(selected) { // eslint-disable-line
+        vm.selected = selected;
+        vm.selectedYear = selected.getFullYear();
+      }
+    );
+
     thisComponent.selectedYear.should.be.eql(thisComponent.year - 1);
 
     thisComponent.$el.click();
