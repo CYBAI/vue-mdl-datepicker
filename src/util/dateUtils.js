@@ -34,33 +34,44 @@ function getDaysInMonth(d) {
 function getWeekArray(d, firstDayOfWeek) {
   const dayArray = [];
   const daysInMonth = getDaysInMonth(d);
-  const weekArray = [];
   let week = [];
 
   for (let i = 1; i <= daysInMonth; i++) {
     dayArray.push(new Date(d.getFullYear(), d.getMonth(), i));
   }
 
-  const addWeek = (thisWeek) => {
-    const emptyDays = 7 - thisWeek.length;
+  const fillEmptyDays = (thisWeek, weekArrayLength) => {
+    const emptyDays = 7 - week.length;
+
     for (let i = 0; i < emptyDays; ++i) {
-      thisWeek[weekArray.length ? 'push' : 'unshift'](null);
+      if (weekArrayLength) {
+        thisWeek.push(null);
+      } else {
+        thisWeek.unshift(null);
+      }
     }
-    weekArray.push(thisWeek);
+
+    return thisWeek;
   };
 
-  dayArray.forEach((day) => {
+  return dayArray.reduce((weekArray, day) => {
     if (week.length > 0 && day.getDay() === firstDayOfWeek) {
-      addWeek(week);
+      weekArray.push(
+        fillEmptyDays(week, weekArray.length)
+      );
       week = [];
     }
-    week.push(day);
-    if (dayArray.indexOf(day) === dayArray.length - 1) {
-      addWeek(week);
-    }
-  });
 
-  return weekArray;
+    week.push(day);
+
+    if (dayArray.indexOf(day) === dayArray.length - 1) {
+      weekArray.push(
+        fillEmptyDays(week, weekArray.length)
+      );
+    }
+
+    return weekArray;
+  }, []);
 }
 
 function getYearsArray(
