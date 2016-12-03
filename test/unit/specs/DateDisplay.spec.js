@@ -19,6 +19,7 @@ describe('DateDisplay.vue', () => {
       render: h => h(
         DateDisplay, {
           props: {
+            orientation: 'portrait',
             selectedDate: new Date(),
             disableYearSelection: false,
           },
@@ -26,7 +27,7 @@ describe('DateDisplay.vue', () => {
     }).$mount(el);
 
     should.exist(vm.$el);
-    vm.$el.className.should.be.eql('date-display');
+    vm.$el.className.should.be.eql('date-display-portrait');
 
     const yearSelection = vm.$el.firstChild;
     const dateSelection = vm.$el.lastChild;
@@ -35,7 +36,7 @@ describe('DateDisplay.vue', () => {
     should.exist(dateSelection);
 
     yearSelection.className.should.be.eql('datepicker-year-selection');
-    dateSelection.className.should.be.eql('datepicker-date-selection');
+    dateSelection.className.should.be.eql('datepicker-date-selection-portrait');
 
     yearSelection.childNodes[0].childNodes[0].style.cursor
       .should.be.eql('pointer');
@@ -54,6 +55,7 @@ describe('DateDisplay.vue', () => {
       render: h => h(
         DateDisplay, {
           props: {
+            orientation: 'portrait',
             selectedDate: new Date(),
             disableYearSelection: false,
           },

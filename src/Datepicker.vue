@@ -7,10 +7,11 @@
       placeholder="Choose a day..."
     ></datepicker-input>
     <div v-if="opened" class="datepicker-root">
-      <div class="datepicker-container">
-        <div class="calendar-container">
+      <div class="datepicker-container" :style="datepickerContainerStyle">
+        <div class="calendar-container" :style="calendarContainerStyle">
           <date-display
             :selectedDate="selected"
+            :orientation="lowerOrientation"
             :disableYearSelection="disableYearSelection"
           ></date-display>
           <calendar-dialog
@@ -45,6 +46,10 @@ export default {
     },
     default: {
       type: Date,
+    },
+    orientation: {
+      type: String,
+      default() { return 'portrait'; },
     },
     autoOk: {
       type: Boolean,
@@ -99,6 +104,13 @@ export default {
       selected: new Date(),
       opened: false,
       date: this.default,
+      lowerOrientation: this.orientation.toLowerCase(),
+      datepickerContainerStyle: {
+        width: this.orientation.toLowerCase() === 'portrait' ? '310px' : '479px',
+      },
+      calendarContainerStyle: {
+        width: this.orientation.toLowerCase() === 'portrait' ? '310px' : '479px',
+      },
     };
   },
   methods: {
@@ -146,7 +158,6 @@ export default {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   position: relative;
-  width: 310px;
   max-width: 768px;
   margin: 0px auto;
   z-index: 1500;

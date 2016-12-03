@@ -5,6 +5,7 @@
       v-model="date1"
       :default="date1"
       :maxDate="date1Max"
+      orientation="landscape"
     ></mdl-datepicker>
 
     <div>{{date2}}</div>
