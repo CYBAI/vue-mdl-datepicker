@@ -132,11 +132,6 @@ export default {
       };
     },
   },
-  mounted() {
-    this.componentRoot.$on('update-selected', (selected) => {
-      this.selectedDate = selected;
-    });
-  },
 };
 </script>
 
