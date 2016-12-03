@@ -4,9 +4,6 @@ import WeekRow from 'src/components/WeekRow';
 
 import { getWeekArray } from 'src/util/dateUtils';
 
-
-// import { nextTick } from '../utils';
-
 chai.should();
 
 describe('WeekRow.vue', () => {
