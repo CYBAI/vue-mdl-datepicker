@@ -52,9 +52,9 @@ export default {
 |        minDate       |   `Date`   |  date - 100 year |  Minimum selected date                                |
 |   shouldDisableDate  | `Function` |                  |  Function return those days should be disabled        |
 |      formatDate      | `Function` |     YYYY-MM-dd   |  Function return format of displayed date             |
+|      orientation     |  `String`  |    `portrait`    |  Orientation of datepicker, `portrait` or `landscape` |
 
 ### TODO
-- [ ] Portrait / Landscape
 - [ ] Transitions
 
 # LICENSE
