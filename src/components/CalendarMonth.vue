@@ -26,10 +26,6 @@ export default {
       type: Boolean,
       required: true,
     },
-    weekArray: {
-      type: Array,
-      default() { return getWeekArray(new Date(), 0); },
-    },
     minDate: {
       type: Date,
       required: true,
